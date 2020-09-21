@@ -4,12 +4,16 @@ package com.sid.monbike.dto;
 import com.sid.monbike.entities.Client;
 import com.sid.monbike.entities.Reparation;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class CommandeDto {
 
     private  Long id;
+    @NotNull(message =  " id fiche CET")
     private String libelle;
+    @NotEmpty
     private Long numeroCommende ;
     private LocalDate dateCommande;
     private LocalDate datelivraisonprevu;

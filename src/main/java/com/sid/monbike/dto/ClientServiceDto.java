@@ -1,9 +1,11 @@
 package com.sid.monbike.dto;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ClientServiceDto {
 
+    @NotNull
     private ClientDto clientView;
 
     private List<ServiceDto> serviceViews;

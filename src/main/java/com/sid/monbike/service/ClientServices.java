@@ -10,13 +10,16 @@ import com.sid.monbike.entities.ClientServiceAssocPK;
 import com.sid.monbike.entities.ClientServiceAssociation;
 import com.sid.monbike.entities.Service;
 import com.sid.monbike.error.ClientNotFoundException;
+import com.sid.monbike.error.ServicesNotFoundException;
 import com.sid.monbike.mapper.ClientMapper;
 import com.sid.monbike.mapper.ServiceMapper;
 import com.sid.monbike.repository.ClientRepository;
 import com.sid.monbike.repository.ClientServiceAssociationRepository;
 import com.sid.monbike.repository.ServiceRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.management.ServiceNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -48,6 +51,10 @@ public class ClientServices {
                 .map(ServiceDto::getId)
                 .collect(Collectors.toList());
         List<Service> serviceList = serviceRepository.findAllById(idList);
+        if(serviceList==null || serviceList.isEmpty() ){
+
+            throw new ServicesNotFoundException();
+        }
 
         for(Service service : serviceList){
             // List<Service> serviceList = serviceRepository.findAll();

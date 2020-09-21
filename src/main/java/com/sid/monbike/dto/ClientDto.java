@@ -1,12 +1,27 @@
 package com.sid.monbike.dto;
 
+import org.springframework.validation.annotation.Validated;
+import javax.validation.constraints.NotNull;
+
+@Validated
 public class ClientDto {
 
+    //@ApiModelProperty(value = "id", example = "2")
     private Long id ;
+
+    @NotNull
     private String nom;
+
+    @NotNull
     private String prenom;
+
+    @NotNull
     private String adresse;
+
+    @NotNull
     private String tel;
+
+    @NotNull
     private String email;
 
     public String getEmail() {
